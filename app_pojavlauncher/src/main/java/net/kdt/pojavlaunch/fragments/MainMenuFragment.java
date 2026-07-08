@@ -63,7 +63,11 @@ public class MainMenuFragment extends Fragment {
  mDiscordButton.setOnClickListener(v -> Tools.openURL(requireActivity(), getString(R.string.social_media_invite)));
  mCustomControlButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), CustomControlsActivity.class)));
  mInstallJarButton.setOnClickListener(v -> runInstallerWithConfirmation());
- mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
+ mEditProfileButton.setOnClickListener(v -> {
+ if (mVersionSpinner != null) {
+ mVersionSpinner.openProfileEditor(requireActivity());
+ }
+ });
 
  mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
 
@@ -104,4 +108,4 @@ public class MainMenuFragment extends Fragment {
  Toast.makeText(requireContext(), R.string.tasks_ongoing, Toast.LENGTH_LONG).show();
  }
  }
-     }
+}
